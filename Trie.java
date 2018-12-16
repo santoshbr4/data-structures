@@ -1,75 +1,41 @@
 import java.util.Scanner;
 
-public class Trie {
+public class Main {
 
-    class TrieNode {
-        char ch;
-        boolean isWordEnd;
+    public static void main(String [] arr) {
+        Trie trie = new Trie();
+        Scanner sc = new Scanner(System.in);
+
+        boolean carryon = true;
+        int command = 0;
         int count = 0;
-        TrieNode head[] = new TrieNode[26];
-    }
+        String text = null;
 
-    private TrieNode trie[] = new TrieNode[26];
-
-    void insertIntoTrie(char ch, TrieNode cur) {
-        if(ch == '\0') {
-            if(cur != null) {
-                cur.isWordEnd = true;
-                cur.count++;
+        while (carryon) {
+            System.out.println("Enter command ");
+            command = sc.nextInt();
+            switch (command) {
+                case 1: //Insert
+                {
+                    System.out.println("Enter string to insert");
+                    text = sc.next();
+                    trie.insert(text);
+                    break;
+                }
+                case 2:
+                {
+                    System.out.println("Enter string to search");
+                    text = sc.next();
+                    count = trie.getWordCount(text);
+                    System.out.println(count);
+                    break;
+                }
+                case 3:
+                    carryon = false;
+                    break;
+                default:
+                    break;
             }
-            return;
         }
-
-        if(cur == null) {
-            if(trie[ch - 'a'] != null) {
-                cur = trie[ch - 'a'];
-            }
-            else {
-                trie[ch - 'a'] = new TrieNode();
-                trie[ch - 'a'].ch = ch;
-                cur = trie[ch - 'a'];
-            }
-        }
-        else {
-            if(cur.head[ch - 'a'] == null) {
-                cur.head[ch - 'a'] = new TrieNode();
-                cur.head[ch - 'a'].ch = ch;
-            }
-            cur = cur.head[ch - 'a'];
-        }
-    }
-
-    void insert(String text) {
-        int index = 0;
-        TrieNode cur = null;
-        char ch = text.charAt(index);
-        System.out.println(text.length());
-        while( index < text.length()) {
-            ch = text.charAt(index);
-            insertIntoTrie(ch, cur);
-            index++;
-        }
-        insertIntoTrie('\0', cur);
-    }
-
-    int getWordCount(String text) {
-        TrieNode cur = null;
-        int index = 0;
-        char ch = '\0';
-        while( index < text.length()) {
-            ch = text.charAt(index);
-            if(cur == null) {
-                cur = trie[ch - 'a'];
-                if(cur == null)
-                    return 0;
-            }
-            else {
-                cur = cur.head[ch - 'a'];
-                if(cur == null)
-                    return 0;
-            }
-            index++;
-        }
-        return cur.count;
     }
 }
