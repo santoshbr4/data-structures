@@ -22,7 +22,7 @@ node *createNode(int data)
 	return p;
 }
 
-void queue(int data)
+void enqueue(int data)
 {
 	node *p = createNode(data);
 	p->next = front;
@@ -55,17 +55,17 @@ int dequeue()
 
 int main()
 {
-	queue(100);
-	queue(200);
-	queue(300);
+	enqueue(100);
+	enqueue(200);
+	enqueue(300);
 
 	cout << dequeue() << endl;
 	cout << dequeue() << endl;
 	cout << dequeue() << endl;
 	cout << dequeue() << endl;
 
-	queue(400);
-	queue(500);
+	enqueue(400);
+	enqueue(500);
 
 	cout << dequeue() << endl;
 	cout << dequeue() << endl;
