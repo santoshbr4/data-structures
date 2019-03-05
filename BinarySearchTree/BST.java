@@ -10,6 +10,7 @@ public class BST {
 
         Node(int val) {
             data = val;
+            left = right = null;
         }
     }
 
@@ -57,16 +58,14 @@ public class BST {
     public static void insertRec(Node root,int data) {
         if(data < root.data) {
             if(root.left == null) {
-                Node p = new Node(data);
-                root.left = p;
+                root.left = new Node(data);
             }
             else
                 insertRec(root.left, data);
         }
         else {
             if(root.right == null) {
-                Node p = new Node(data);
-                root.right = p;
+                root.right = new Node(data);
             }
             else
                 insertRec(root.right, data);
@@ -76,14 +75,11 @@ public class BST {
     /*********************************************************/
 
     /*Search an element in BST */
+    private static Node searchKey(Node root, int key) {
+        if(root == null || root.data == key)
+            return root;
 
-    private static boolean searchKey(Node root, int key) {
-        if(root == null)
-            return false;
-
-        if(root.data == key)
-            return true;
-        else if(root.data < key)
+        if(root.data < key)
             return searchKey(root.right, key);
         else
             return searchKey(root.left, key);
@@ -111,7 +107,7 @@ public class BST {
             input = sc.nextInt();
             if(input == -1)
                 break;
-            System.out.println("Element exists " + searchKey(root, input));
+            System.out.println("Element exists at node " + searchKey(root, input));
         }
     }
 }
