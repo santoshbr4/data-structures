@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class BST {
 
+     //Why static inner class? Read https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
      private static class Node {
         private int data;
         private Node left;
