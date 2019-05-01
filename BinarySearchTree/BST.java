@@ -86,6 +86,10 @@ public class BST {
     }
     /*********************************************************/
 
+    /*********************************************************/
+     /*TODO Add delete of a key in BST*/
+     
+    /*********************************************************/
     public static void main(String []args) {
         Node root = null;
         Scanner sc = new Scanner(System.in);
