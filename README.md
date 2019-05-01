@@ -1,3 +1,3 @@
 # data-structures
 
-Basic data structure samples.
+Trees and Data structures
